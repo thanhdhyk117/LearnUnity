@@ -2,19 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DameReceiver : MonoBehaviour
+public class DamageReceiver : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] protected int hp = 10;
-    void Start()
+    [SerializeField] protected int hp = 3;
+    public virtual bool IsDead()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return this.hp <= 0;
     }
 
     public virtual void Receive(int damage)

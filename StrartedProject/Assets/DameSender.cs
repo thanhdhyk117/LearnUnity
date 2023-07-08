@@ -14,7 +14,7 @@ public class DameSender : MonoBehaviour
 
         this.enemyCtrl.despwaner.Despwan();
         
-        DameReceiver dameReceiver = collision.GetComponent<DameReceiver>();
+        DamageReceiver dameReceiver = collision.GetComponent<DamageReceiver>();
         dameReceiver.Receive(1);
 
     }
