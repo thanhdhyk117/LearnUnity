@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyCtrl : MonoBehaviour
 {
-    public Despwaner despwaner;
+    public Despawner despwaner;
     private void Awake() {
-        this.despwaner = GetComponent<Despwaner>();
+        this.despwaner = GetComponent<Despawner>();
     }
 }
