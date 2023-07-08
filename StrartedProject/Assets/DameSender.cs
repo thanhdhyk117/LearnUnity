@@ -4,21 +4,16 @@ using UnityEngine;
 
 public class DameSender : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    protected EnemyCtrl enemyCtrl;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Awake() {
+        this.enemyCtrl = GetComponent<EnemyCtrl>();
     }
-
     private void OnTriggerEnter2D(Collider2D collision) {
         Debug.Log(collision.name);
 
+        this.enemyCtrl.despwaner.Despwan();
+        
         DameReceiver dameReceiver = collision.GetComponent<DameReceiver>();
         dameReceiver.Receive(1);
 
