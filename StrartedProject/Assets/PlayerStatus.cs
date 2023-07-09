@@ -9,13 +9,7 @@ public class PlayerStatus : MonoBehaviour
     private void Awake() {
         this.playerCtrl = GetComponent<PlayerCtrl>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     protected virtual void checkDead()
     {
         if(this.playerCtrl.dameReceiver.IsDead()) this.Dead();
