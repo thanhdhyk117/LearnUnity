@@ -9,24 +9,6 @@ public class BombSpawner : Spawner
     {
         this.spawnPosName = "BombSpawnPos";
         this.prefabName = "BombPrefab";
-        this.maxObject = 7;
+        this.maxObject = 17;
     }
-
-    // protected override void Spawn()
-    // {
-    //     spawnTimer += Time.deltaTime * 2;
-    //     if(spawnTimer < spawnDelay) return;
-    //     this.spawnTimer = 0;
-
-    //     if(objects.Count >= this.maxObject) return;
-    //     GameObject  boom =  Instantiate(objPrefabs);
-    //     boom.transform.parent = transform;
-
-    //     boom.name = "Boom #";
-    //     boom.transform.position = spawnPos.transform.position;
-    //     boom.SetActive(true);
-    //     boom.transform.parent = transform;
-
-    //     this.objects.Add(boom);
-    // }
 }

@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
     public string spawnPosName = "";
     public string prefabName = "";
 
-    protected int layerOrder = 0;
+    public int layerOrder = 0;
 
     private void Awake() {
         this.objPrefabs = GameObject.Find(this.prefabName);
@@ -57,7 +57,6 @@ public class Spawner : MonoBehaviour
 
     protected virtual GameObject Spawn(Vector3 pos)
     {
-
         GameObject obj = Instantiate(this.objPrefabs);
         obj.transform.position = spawnPos.transform.position;
         obj.transform.parent = transform;

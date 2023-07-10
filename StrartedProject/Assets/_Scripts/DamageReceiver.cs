@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DamageReceiver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] protected int hp = 3;
+    [Header("DameReceiver")]
+    public int hp = 1;
     public virtual bool IsDead()
     {
         return this.hp <= 0;
@@ -13,7 +13,6 @@ public class DamageReceiver : MonoBehaviour
 
     public virtual void Receive(int damage)
     {
-        print("Hp se bị tru đi");
         hp -= damage; 
     }
 }
