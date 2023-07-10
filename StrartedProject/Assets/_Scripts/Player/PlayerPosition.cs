@@ -10,7 +10,7 @@ public class PlayerPosition : MonoBehaviour
     public float spwanTimer = 0;
     public float delayTimer = 1f;
 
-    public GameObject minionPrefab;
+    public GameObject boomPrefabs;
 
     public int index;
     void Start()
@@ -32,7 +32,7 @@ public class PlayerPosition : MonoBehaviour
         this.spwanTimer = 0;
 
         if(booms.Count >= 7) return;
-        GameObject  boom =  Instantiate(minionPrefab);
+        GameObject  boom =  Instantiate(boomPrefabs);
 
         boom.name = "Boom #" + index;
         boom.transform.position = transform.position;
