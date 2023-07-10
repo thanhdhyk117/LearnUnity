@@ -78,3 +78,9 @@ crashlytics-build.properties
 local.properties
 **/proguard/
 *.log
+.vscode
+/StrartedProject/Library
+/StrartedProject/Logs
+/StrartedProject/obj
+/StrartedProject/Packages
+/StrartedProject/UserSettings
