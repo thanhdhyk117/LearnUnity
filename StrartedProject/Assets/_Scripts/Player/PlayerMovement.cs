@@ -33,15 +33,32 @@ public class PlayerMovement : MonoBehaviour
     protected virtual void UpdateSpeed()
     {
         this.velocity.x = this.pressHorizontal * speedHorizontal;
-        if(this.pressVertical > 0) this.velocity.y += this.speeedUp;
-        if(this.pressVertical == 0)
-        {
-            this.velocity.y -= this.speedDown;
-            if(this.velocity.y <= 0) this.velocity.y = 0;
-        } 
-
-        if(this.velocity.y > this.speedMax) this.velocity.y = this.speedMax;
+        
+        this.UpdateSpeedUp();
+        this.UpdateSpeedDown();
 
         this.rb2d.MovePosition(this.rb2d.position + this.velocity * Time.fixedDeltaTime);
+    }
+
+    protected virtual void UpdateSpeedUp()
+    {
+        if(this.pressVertical <= 0) return;
+        
+        this.velocity.y += this.speeedUp;
+        if(this.velocity.y > this.speedMax) this.velocity.y = this.speedMax;
+
+        if(transform.position.x < -7 || transform.position.x > 7){
+            this.velocity.y -= 1f;
+
+            if(this.velocity.y <= 3) this.velocity.y = 3;
+        }
+    }
+
+    protected virtual void UpdateSpeedDown()
+    {
+        if(this.pressVertical != 0) return;
+        
+        this.velocity.y -= this.speedDown;
+        if(this.velocity.y <= 0) this.velocity.y = 0;
     }
 }
