@@ -6,14 +6,20 @@ public class DameSender : MonoBehaviour
 {
     protected EnemyCtrl enemyCtrl;
 
-    private void Awake() {
+    private void Awake()
+    {
         this.enemyCtrl = GetComponent<EnemyCtrl>();
     }
     private void OnTriggerEnter2D(Collider2D collision) 
     {
-        this.enemyCtrl.despwaner.Despwan();
-        
         DamageReceiver dameReceiver = collision.GetComponent<DamageReceiver>();
+        
+        if(dameReceiver == null) return;
+        
         dameReceiver.Receive(1);
+
+        this.enemyCtrl.despwaner.Despwan();
+
+        Destroy(gameObject);
     }
 }

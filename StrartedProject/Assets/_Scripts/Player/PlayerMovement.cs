@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float speedMax = 20f;
     public float speedHorizontal = 3f;
 
+    public bool autoRun;
     private void Awake() {
         this.rb2d = GetComponent<Rigidbody2D>();
     }
@@ -28,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     {
         this.pressHorizontal = Input.GetAxis("Horizontal");
         this.pressVertical = Input.GetAxis("Vertical");
+
+        if(this.autoRun) pressVertical = 1;
     }
 
     protected virtual void UpdateSpeed()
@@ -43,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
     protected virtual void UpdateSpeedUp()
     {
         if(this.pressVertical <= 0) return;
-        
+
         this.velocity.y += this.speeedUp;
         if(this.velocity.y > this.speedMax) this.velocity.y = this.speedMax;
 

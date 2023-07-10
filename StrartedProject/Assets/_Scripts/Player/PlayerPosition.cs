@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerPosition : MonoBehaviour
 {
-    public List<GameObject> minions;
+    public List<GameObject> booms;
 
     public float spwanTimer = 0;
     public float delayTimer = 1f;
@@ -31,28 +31,28 @@ public class PlayerPosition : MonoBehaviour
         if(spwanTimer < delayTimer) return;
         this.spwanTimer = 0;
 
-        if(minions.Count >= 7) return;
-        GameObject  minion =  Instantiate(minionPrefab);
+        if(booms.Count >= 7) return;
+        GameObject  boom =  Instantiate(minionPrefab);
 
-        minion.name = "Boom #" + index;
-        minion.transform.position = transform.position;
-        minion.SetActive(true);
+        boom.name = "Boom #" + index;
+        boom.transform.position = transform.position;
+        boom.SetActive(true);
+        boom.transform.parent = transform;
 
-        this.minions.Add(minion);
+        this.booms.Add(boom);
     }
 
     void checkMinionDead()
     {
         GameObject minion;
 
-        for(int i = 0; i < minions.Count; i++)
+        for(int i = 0; i < booms.Count; i++)
         {
-            minion = this.minions[i];
+            minion = this.booms[i];
 
             if(minion == null){
-                minions.RemoveAt(i);
+                booms.RemoveAt(i);
             }
-                
         }
     }
 }

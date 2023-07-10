@@ -5,28 +5,33 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform player;
-    protected float speed = 7f;
-    protected float disLimit = 0.5f;
-    void Start()
-    {
-        
-    }
+    public float speed = 27f;
+    public float disLimit = 3f;
 
-    // Update is called once per frame
-    void Update()
+    public float randomPos = 0;
+    
+    private void Start()
+    {
+        this.player = PlayerCtrl.instance.transform;
+
+        this.randomPos = Random.Range(-6, 6);
+    }
+    void FixedUpdate()
     {
         this.Follow();
     }
 
     void Follow()
     {
-        Vector3 distance = player.position - transform.position;
+        Vector3 pos = player.position;
+        pos.x = this.randomPos;
+
+        Vector3 distance = pos - transform.position;
 
         if(distance.magnitude >= disLimit)
         {
-            Vector3 targetPoint = player.position - distance.normalized * disLimit;
-            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, targetPoint, speed * Time.deltaTime);
+            Vector3 targetPoint = pos - distance.normalized * disLimit;
+            transform.position = Vector3.MoveTowards(transform.position, targetPoint, speed * Time.fixedDeltaTime);
         }
-        
     }
 }
